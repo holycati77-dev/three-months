@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Three Months ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #0d0b14;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* -----------------------------
+       BACKGROUND
+    ----------------------------- */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 105, 180, 0.15), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(150, 100, 255, 0.13), transparent 30%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* -----------------------------
+       OPENING SCREEN
+    ----------------------------- */
+
+    #opening {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+    }
+
+    .opening-box {
+      max-width: 700px;
+      animation: fadeUp 1.5s ease;
+    }
+
+    .small-text {
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity: 0.65;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(45px, 10vw, 90px);
+      line-height: 1;
+      margin-bottom: 25px;
+      background: linear-gradient(90deg, #fff, #ffb7d9, #d8b4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .opening-box p {
+      font-size: 18px;
+      line-height: 1.7;
+      opacity: 0.8;
+      margin-bottom: 35px;
+    }
+
+    .open-button {
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .open-button:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.16);
+    }
+
+    /* -----------------------------
+       MAIN CONTENT
+    ----------------------------- */
+
+    #main {
+      display: none;
+    }
+
+    section {
+      min-height: 80vh;
+      padding: 100px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      opacity: 0.5;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: clamp(35px, 6vw, 60px);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    /* -----------------------------
+       COUNTER
+    ----------------------------- */
+
+    .counter {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .counter-card {
+      width: 110px;
+      height: 110px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .counter-number {
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .counter-label {
+      font-size: 11px;
+      opacity: 0.5;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* -----------------------------
+       MESSAGE
+    ----------------------------- */
+
+    .letter {
+      max-width: 750px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 25px;
+      padding: 45px;
+      line-height: 2;
+      font-size: 18px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    .letter p {
+      margin-bottom: 20px;
+    }
+
+    .signature {
+      text-align: right;
+      font-style: italic;
+      opacity: 0.8;
+      margin-top: 30px;
+    }
+
+    /* -----------------------------
+       PHOTO GALLERY
+    ----------------------------- */
+
+    .gallery {
+      width: 100%;
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .photo {
+      height: 300px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background: #191622;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: 0.4s;
+    }
+
+    .photo:hover {
+      transform: translateY(-8px) rotate(1deg);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .photo:hover img {
+      transform: scale(1.05);
+    }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      font-size: 14px;
+    }
+
+    /* -----------------------------
+       MEMORY CARDS
+    ----------------------------- */
+
+    .memories {
+      max-width: 950px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .memory {
+      padding: 30px;
+      min-height: 220px;
+      border-radius: 25px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: 0.3s;
+    }
+
+    .memory:hover {
+      transform: translateY(-7px);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .memory-number {
+      font-size: 13px;
+      opacity: 0.4;
+      margin-bottom: 20px;
+    }
+
+    .memory h3 {
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .memory p {
+      line-height: 1.7;
+      opacity: 0.65;
+    }
+
+    /* -----------------------------
+       FINAL SECTION
+    ----------------------------- */
+
+    .final-message {
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .big-heart {
+      font-size: 70px;
+      animation: heartbeat 1.5s infinite;
+      margin-bottom: 30px;
+    }
+
+    .final-message h2 {
+      font-size: clamp(40px, 7vw, 70px);
+      margin-bottom: 25px;
+    }
+
+    .final-message p {
+      font-size: 18px;
+      line-height: 1.8;
+      opacity: 0.7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      opacity: 0.35;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    /* -----------------------------
+       FLOATING HEARTS
+    ----------------------------- */
+
+    .heart {
+      position: fixed;
+      pointer-events: none;
+      animation: floatUp 5s linear forwards;
+      z-index: 100;
+      opacity: 0.8;
+    }
+
+    /* -----------------------------
+       ANIMATIONS
+    ----------------------------- */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+
+      to {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* -----------------------------
+       MOBILE
+    ----------------------------- */
+
+    @media (max-width: 600px) {
+
+      section {
+        padding: 80px 6%;
+      }
+
+      .letter {
+        padding: 28px;
+        font-size: 16px;
+      }
+
+      .counter-card {
+        width: 85px;
+        height: 85px;
+      }
+
+      .counter-number {
+        font-size: 27px;
+      }
+
+      .photo {
+        height: 360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =================================
+       OPENING
+  ================================= -->
+
+  <div id="opening">
+
+    <div class="opening-box">
+
+      <div class="small-text">
+        A little something for you
+      </div>
+
+      <h1>Three Months.</h1>
+
+      <p>
+        Some things deserve more than a text message.
+        So I made you this.
+      </p>
+
+      <button class="open-button" onclick="openSite()">
+        Open it ❤️
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================
+       MAIN WEBSITE
+  ================================= -->
+
+  <div id="main">
+
+
+    <!-- COUNTER -->
+
+    <section>
+
+      <div class="section-label">
+        Our little milestone
+      </div>
+
+      <h2 class="section-title">
+        Three months of us.
+      </h2>
+
+      <div class="counter">
+
+        <div class="counter-card">
+          <div class="counter-number" id="days">0</div>
+          <div class="counter-label">Days</div>
+        </div>
+
+        <div class="counter-card">
+          <div class="counter-number" id="hours">0</div>
+          <div class="counter-label">Hours</div>
+        </div>
+
+        <div class="counter-card">
+          <div class="counter-number" id="minutes">0</div>
+          <div class="counter-label">Minutes</div>
+        </div>
+
+        <div class="counter-card">
+          <div class="counter-number" id="seconds">0</div>
+          <div class="counter-label">Seconds</div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LETTER -->
+
+    <section>
+
+      <div class="section-label">
+        Something I wanted to say
+      </div>
+
+      <h2 class="section-title">
+        Dear Pratik,
+      </h2>
+
+      <div class="letter">
+
+        <p>
+          Three months already. Honestly, it feels both
+          really fast and like we've already collected so
+          many little memories together.
+        </p>
+
+        <p>
+          I don't think I can fit everything I've felt
+          during these months into one webpage, but I
+          wanted to make something that you could keep
+          and come back to.
+        </p>
+
+        <p>
+          Thank you for all the laughs, conversations,
+          random moments, annoying moments, and everything
+          in between.
+        </p>
+
+        <p>
+          Whatever the next chapters bring, I'm glad
+          these three months became a part of my story.
+        </p>
+
+        <div class="signature">
+          — Shruti ❤️
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PHOTO GALLERY -->
+
+    <section>
+
+      <div class="section-label">
+        Little pieces of us
+      </div>
+
+      <h2 class="section-title">
+        Memories 📸
+      </h2>
+
+      <div class="gallery">
+
+        <!--
+          CHANGE THESE IMAGE LINKS
+          TO YOUR OWN PHOTOS.
+
+          Example:
+          src="YOUR-IMAGE-LINK-HERE"
+        -->
+
+        <div class="photo">
+
+          <img
+            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80"
+            alt="Memory 1"
+          >
+
+          <div class="photo-caption">
+            One of my favourite memories ❤️
+          </div>
+
+        </div>
+
+
+        <div class="photo">
+
+          <img
+            src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80"
+            alt="Memory 2"
+          >
+
+          <div class="photo-caption">
+            This one makes me smile.
+          </div>
+
+        </div>
+
+
+        <div class="photo">
+
+          <img
+            src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80"
+            alt="Memory 3"
+          >
+
+          <div class="photo-caption">
+            Another little memory.
+          </div>
+
+        </div>
+
+
+        <div class="photo">
+
+          <img
+            src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80"
+            alt="Memory 4"
+          >
+
+          <div class="photo-caption">
+            Three months ✨
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MEMORIES -->
+
+    <section>
+
+      <div class="section-label">
+        Things worth remembering
+      </div>
+
+      <h2 class="section-title">
+        Little moments.
+      </h2>
+
+      <div class="memories">
+
+        <div class="memory">
+
+          <div class="memory-number">
+            01
+          </div>
+
+          <h3>The first days</h3>
+
+          <p>
+            Put your favourite memory from when
+            everything was just beginning here.
+          </p>
+
+        </div>
+
+
+        <div class="memory">
+
+          <div class="memory-number">
+            02
+          </div>
+
+          <h3>That one moment</h3>
+
+          <p>
+            Add an inside joke, a funny incident,
+            or something only the two of you understand.
+          </p>
+
+        </div>
+
+
+        <div class="memory">
+
+          <div class="memory-number">
+            03
+          </div>
+
+          <h3>Something I love</h3>
+
+          <p>
+            Write something specific about him that
+            you genuinely appreciate.
+          </p>
+
+        </div>
+
+
+        <div class="memory">
+
+          <div class="memory-number">
+            04
+          </div>
+
+          <h3>To be continued...</h3>
+
+          <p>
+            Because three months is a milestone,
+            not the end of the story.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section>
+
+      <div class="final-message">
+
+        <div class="big-heart">
+          ❤️
+        </div>
+
+        <h2>
+          Happy 3 Months,
+          Pratik.
+        </h2>
+
+        <p>
+          Here's to the memories we've already made,
+          the ones we're going to make, and all the
+          random little moments in between.
+        </p>
+
+        <br>
+
+        <p>
+          <strong>
+            — Shruti
+          </strong>
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+      MADE WITH ❤️ FOR A SPECIAL DAY
+    </footer>
+
+  </div>
+
+
+  <!-- =================================
+       JAVASCRIPT
+  ================================= -->
+
+  <script>
+
+    /* -----------------------------
+       OPEN WEBSITE
+    ----------------------------- */
+
+    function openSite() {
+
+      document.getElementById("opening").style.display = "none";
+
+      document.getElementById("main").style.display = "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+      startHearts();
+    }
+
+
+    /* -----------------------------
+       ANNIVERSARY DATE
+       
+       CHANGE THIS DATE!
+       
+       Format:
+       YYYY-MM-DDTHH:MM:SS
+       
+       Example:
+       2026-05-16T00:00:00
+    ----------------------------- */
+
+    const anniversaryDate =
+      new Date("2026-05-16T00:00:00");
+
+
+    /* -----------------------------
+       COUNTER
+    ----------------------------- */
+
+    function updateCounter() {
+
+      const now = new Date();
+
+      const difference =
+        now - anniversaryDate;
+
+      if (difference < 0) {
+        return;
+      }
+
+      const totalSeconds =
+        Math.floor(difference / 1000);
+
+      const days =
+        Math.floor(totalSeconds / 86400);
+
+      const hours =
+        Math.floor((totalSeconds % 86400) / 3600);
+
+      const minutes =
+        Math.floor((totalSeconds % 3600) / 60);
+
+      const seconds =
+        totalSeconds % 60;
+
+
+      document.getElementById("days").textContent =
+        days;
+
+      document.getElementById("hours").textContent =
+        hours;
+
+      document.getElementById("minutes").textContent =
+        minutes;
+
+      document.getElementById("seconds").textContent =
+        seconds;
+    }
+
+
+    updateCounter();
+
+    setInterval(updateCounter, 1000);
+
+
+    /* -----------------------------
+       FLOATING HEARTS
+    ----------------------------- */
+
+    function createHeart() {
+
+      const heart =
+        document.createElement("div");
+
+      heart.className = "heart";
+
+      heart.textContent =
+        ["❤️", "♡", "♥", "✨"][Math.floor(Math.random() * 4)];
+
+      heart.style.left =
+        Math.random() * 100 + "vw";
+
+      heart.style.bottom =
+        "-30px";
+
+      heart.style.fontSize =
+        (12 + Math.random() * 20) + "px";
+
+      heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+      document.body.appendChild(heart);
+
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+
+    function startHearts() {
+
+      setInterval(() => {
+        createHeart();
+      }, 700);
+
+    }
+
+  </script>
+
+</body>
+</html>
