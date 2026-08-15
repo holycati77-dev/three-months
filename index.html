@@ -24,10 +24,6 @@
       overflow-x: hidden;
     }
 
-    /* -----------------------------
-       BACKGROUND
-    ----------------------------- */
-
     body::before {
       content: "";
       position: fixed;
@@ -39,9 +35,7 @@
       z-index: -1;
     }
 
-    /* -----------------------------
-       OPENING SCREEN
-    ----------------------------- */
+    /* OPENING */
 
     #opening {
       min-height: 100vh;
@@ -99,9 +93,7 @@
       background: rgba(255,255,255,0.16);
     }
 
-    /* -----------------------------
-       MAIN CONTENT
-    ----------------------------- */
+    /* MAIN */
 
     #main {
       display: none;
@@ -130,9 +122,7 @@
       text-align: center;
     }
 
-    /* -----------------------------
-       COUNTER
-    ----------------------------- */
+    /* COUNTER */
 
     .counter {
       display: flex;
@@ -167,9 +157,7 @@
       letter-spacing: 2px;
     }
 
-    /* -----------------------------
-       MESSAGE
-    ----------------------------- */
+    /* LETTER */
 
     .letter {
       max-width: 750px;
@@ -194,9 +182,7 @@
       margin-top: 30px;
     }
 
-    /* -----------------------------
-       PHOTO GALLERY
-    ----------------------------- */
+    /* PHOTO GALLERY */
 
     .gallery {
       width: 100%;
@@ -241,9 +227,7 @@
       font-size: 14px;
     }
 
-    /* -----------------------------
-       MEMORY CARDS
-    ----------------------------- */
+    /* MEMORIES */
 
     .memories {
       max-width: 950px;
@@ -283,9 +267,7 @@
       opacity: 0.65;
     }
 
-    /* -----------------------------
-       FINAL SECTION
-    ----------------------------- */
+    /* FINAL */
 
     .final-message {
       text-align: center;
@@ -317,9 +299,7 @@
       letter-spacing: 2px;
     }
 
-    /* -----------------------------
-       FLOATING HEARTS
-    ----------------------------- */
+    /* FLOATING HEARTS */
 
     .heart {
       position: fixed;
@@ -329,9 +309,7 @@
       opacity: 0.8;
     }
 
-    /* -----------------------------
-       ANIMATIONS
-    ----------------------------- */
+    /* ANIMATIONS */
 
     @keyframes fadeUp {
       from {
@@ -367,9 +345,7 @@
       }
     }
 
-    /* -----------------------------
-       MOBILE
-    ----------------------------- */
+    /* MOBILE */
 
     @media (max-width: 600px) {
 
@@ -400,9 +376,7 @@
 
 <body>
 
-  <!-- =================================
-       OPENING
-  ================================= -->
+  <!-- OPENING -->
 
   <div id="opening">
 
@@ -428,9 +402,7 @@
   </div>
 
 
-  <!-- =================================
-       MAIN WEBSITE
-  ================================= -->
+  <!-- MAIN WEBSITE -->
 
   <div id="main">
 
@@ -535,19 +507,14 @@
 
       <div class="gallery">
 
-        <!--
-          CHANGE THESE IMAGE LINKS
-          TO YOUR OWN PHOTOS.
 
-          Example:
-          src="YOUR-IMAGE-LINK-HERE"
-        -->
+        <!-- PHOTO 1 -->
 
         <div class="photo">
 
           <img
-            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80"
-            alt="Memory 1"
+            src="WhatsApp Image 2026-08-15 at 8.38.22 AM.jpeg"
+            alt="Our memory"
           >
 
           <div class="photo-caption">
@@ -557,11 +524,13 @@
         </div>
 
 
+        <!-- PHOTO 2 -->
+
         <div class="photo">
 
           <img
-            src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80"
-            alt="Memory 2"
+            src="WhatsApp Image 2026-08-15 at 8.38.22 AM.jpeg"
+            alt="Our memory"
           >
 
           <div class="photo-caption">
@@ -571,11 +540,13 @@
         </div>
 
 
+        <!-- PHOTO 3 -->
+
         <div class="photo">
 
           <img
-            src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80"
-            alt="Memory 3"
+            src="WhatsApp Image 2026-08-15 at 8.38.22 AM.jpeg"
+            alt="Our memory"
           >
 
           <div class="photo-caption">
@@ -585,11 +556,13 @@
         </div>
 
 
+        <!-- PHOTO 4 -->
+
         <div class="photo">
 
           <img
-            src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80"
-            alt="Memory 4"
+            src="WhatsApp Image 2026-08-15 at 8.38.22 AM.jpeg"
+            alt="Our memory"
           >
 
           <div class="photo-caption">
@@ -597,6 +570,7 @@
           </div>
 
         </div>
+
 
       </div>
 
@@ -726,15 +700,9 @@
   </div>
 
 
-  <!-- =================================
-       JAVASCRIPT
-  ================================= -->
+  <!-- JAVASCRIPT -->
 
   <script>
-
-    /* -----------------------------
-       OPEN WEBSITE
-    ----------------------------- */
 
     function openSite() {
 
@@ -751,25 +719,20 @@
     }
 
 
-    /* -----------------------------
-       ANNIVERSARY DATE
-       
-       CHANGE THIS DATE!
-       
-       Format:
-       YYYY-MM-DDTHH:MM:SS
-       
-       Example:
-       2026-05-16T00:00:00
-    ----------------------------- */
+    /*
+      IMPORTANT:
+
+      Put your REAL relationship start date here.
+
+      Example:
+      new Date("2026-05-16T00:00:00")
+
+      Change this date if needed.
+    */
 
     const anniversaryDate =
       new Date("2026-05-16T00:00:00");
 
-
-    /* -----------------------------
-       COUNTER
-    ----------------------------- */
 
     function updateCounter() {
 
@@ -817,10 +780,6 @@
     setInterval(updateCounter, 1000);
 
 
-    /* -----------------------------
-       FLOATING HEARTS
-    ----------------------------- */
-
     function createHeart() {
 
       const heart =
@@ -829,7 +788,9 @@
       heart.className = "heart";
 
       heart.textContent =
-        ["❤️", "♡", "♥", "✨"][Math.floor(Math.random() * 4)];
+        ["❤️", "♡", "♥", "✨"][
+          Math.floor(Math.random() * 4)
+        ];
 
       heart.style.left =
         Math.random() * 100 + "vw";
